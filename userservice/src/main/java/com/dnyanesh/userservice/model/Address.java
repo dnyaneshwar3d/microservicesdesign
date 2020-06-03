@@ -2,14 +2,18 @@ package com.dnyanesh.userservice.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "address")
 public class Address {
 	@Id
-	@Column(name = "address_id")
+	@Column(name = "address_id", columnDefinition = "serial")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@Column(name = "line1")
 	private String line1;
@@ -25,6 +29,9 @@ public class Address {
 	private String country;
 	@Column(name = "mobilenumber")
 	private String mobileNumber;
+
+	@OneToOne(mappedBy = "address")
+	private UserDetails userDetails;
 
 	public Address() {
 	}
@@ -104,6 +111,14 @@ public class Address {
 
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
+	}
+
+	public UserDetails getUserDetails() {
+		return userDetails;
+	}
+
+	public void setUserDetails(UserDetails userDetails) {
+		this.userDetails = userDetails;
 	}
 
 	@Override
