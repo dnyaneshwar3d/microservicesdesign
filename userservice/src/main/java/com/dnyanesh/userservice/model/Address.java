@@ -1,14 +1,33 @@
 package com.dnyanesh.userservice.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "address")
 public class Address {
+	@Id
+	@Column(name = "address_id")
 	private Integer id;
+	@Column(name = "line1")
 	private String line1;
+	@Column(name = "line2")
 	private String line2;
+	@Column(name = "city")
 	private String city;
+	@Column(name = "pincode")
 	private String pincode;
+	@Column(name = "state")
 	private String state;
+	@Column(name = "country")
 	private String country;
+	@Column(name = "mobilenumber")
 	private String mobileNumber;
+
+	public Address() {
+	}
 
 	public Address(Integer id, String line1, String line2, String city, String pincode, String state, String country,
 			String mobileNumber) {
