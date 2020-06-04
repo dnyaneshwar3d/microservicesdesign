@@ -8,7 +8,7 @@ spring:
 zuul:
   #prefix: /api
   host:
-    socket-timeout-millis: 30000
+    socket-timeout-millis: 300000
   routes:
     userservice:
       path: /user/**

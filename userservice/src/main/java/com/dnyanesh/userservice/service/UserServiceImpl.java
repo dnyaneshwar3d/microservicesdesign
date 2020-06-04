@@ -6,12 +6,16 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.dnyanesh.userservice.model.UserDetails;
 import com.dnyanesh.userservice.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+	@Autowired
+	public RestTemplate restTemplate;
 
 	@Autowired
 	public UserRepository userRepository;
@@ -22,14 +26,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDetails getUser(Integer userId) {
-		// return userRepository.findById(userId).get();
-		return new UserDetails();
+	public List<UserDetails> getAllUser() {
+		return userRepository.findAll();
 	}
 
 	@Override
-	public List<UserDetails> getAllUser() {
-		return userRepository.findAll();
+	public UserDetails getUser(Integer userId) {
+		return userRepository.findById(userId).get();
 	}
 
 	@Override

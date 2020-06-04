@@ -12,19 +12,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
-import com.dnyanesh.userservice.exceptions.ResourceNotFoundException;
 import com.dnyanesh.userservice.model.UserDetails;
-import com.dnyanesh.userservice.repository.UserRepository;
 import com.dnyanesh.userservice.service.UserService;
 
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
-
-	@Autowired
-	public RestTemplate restTemplate;
 
 	@Autowired
 	UserService userService;
