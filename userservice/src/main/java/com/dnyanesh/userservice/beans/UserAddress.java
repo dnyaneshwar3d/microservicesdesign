@@ -1,6 +1,7 @@
 package com.dnyanesh.userservice.beans;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = "id", callSuper = false)
+@Builder
 public class UserAddress {
 
 	private Integer id;
