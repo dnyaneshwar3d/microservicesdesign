@@ -13,7 +13,7 @@ public interface UserService {
 	
 	List<User> getAllUser();
 	
-	User createUser(User userDetails);
+	UserDetails createUser(UserDetails userDetails);
 	
 	User updateUser(User userDetails);
 	

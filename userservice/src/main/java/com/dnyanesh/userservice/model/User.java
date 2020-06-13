@@ -2,16 +2,19 @@ package com.dnyanesh.userservice.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -22,8 +25,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = "userId", callSuper = false)
+@Builder
 @Entity
-@Table(name = "user", uniqueConstraints = { @UniqueConstraint(columnNames = { "username", "emailid" }) })
+@Table(name = "table_user", uniqueConstraints = { @UniqueConstraint(columnNames = { "username", "emailid" }) })
 public class User {
 
 	@Id
@@ -49,7 +53,9 @@ public class User {
 	@Column(name = "updatedon")
 	private Date updatedOn;
 
-	@OneToOne(mappedBy = "user")
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "addressid", referencedColumnName = "addressid")
 	private Address address;
 
 }

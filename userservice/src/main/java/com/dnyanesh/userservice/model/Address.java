@@ -1,16 +1,15 @@
 package com.dnyanesh.userservice.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -21,11 +20,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = "id", callSuper = false)
+@Builder
 @Entity
-@Table(name = "address")
+@Table(name = "table_address")
 public class Address {
 	@Id
-	@Column(name = "addressid", columnDefinition = "serial")
+	@Column(name = "addressid")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@Column(name = "line1")
@@ -43,9 +43,7 @@ public class Address {
 	@Column(name = "mobilenumber")
 	private String mobileNumber;
 
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "userid", referencedColumnName = "userid")
+	@OneToOne(mappedBy = "address")
 	private User user;
 
 }

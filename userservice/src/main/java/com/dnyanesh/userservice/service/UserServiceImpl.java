@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.dnyanesh.userservice.beans.UserAddress;
 import com.dnyanesh.userservice.beans.UserDetails;
+import com.dnyanesh.userservice.model.Address;
 import com.dnyanesh.userservice.model.User;
 import com.dnyanesh.userservice.repository.UserRepository;
 
@@ -49,14 +50,47 @@ public class UserServiceImpl implements UserService {
 				.userName(user.getUserName())
 				.address(userAddress)
 				.build();
+		
 		return userDetails;
 	}
 
 	@Override
-	public User createUser(User userDetails) {
-		userDetails.setCreatedOn(new Date());
-		userDetails.setUpdatedOn(null);
-		return userRepository.save(userDetails);
+	public UserDetails createUser(UserDetails userDetails) {
+		Address address = Address.builder()
+				.id(userDetails.getAddress().getId())
+				.line1(userDetails.getAddress().getLine1())
+				.line2(userDetails.getAddress().getLine2())
+				.city(userDetails.getAddress().getCity())
+				.build();
+		User user = User.builder()
+				.userId(userDetails.getUserId())
+				.firstName(userDetails.getFirstName())
+				.lastName(userDetails.getLastName())
+				.userName(userDetails.getUserName())
+				.createdOn(new Date())
+				.updatedOn(null)
+				.address(address)
+				.build();
+		
+		
+		User createUser = userRepository.save(user);
+		
+		UserAddress userAddress = UserAddress.builder()
+				.id(createUser.getAddress().getId())
+				.line1(createUser.getAddress().getLine1())
+				.line2(createUser.getAddress().getLine2())
+				.city(createUser.getAddress().getCity())
+				.build();
+				
+		UserDetails createdUserDetails = UserDetails.builder()
+				.userId(createUser.getUserId())
+				.firstName(createUser.getFirstName())
+				.lastName(createUser.getLastName())
+				.userName(createUser.getUserName())
+				.address(userAddress)
+				.build();
+		
+		return createdUserDetails;
 	}
 
 	@Override
