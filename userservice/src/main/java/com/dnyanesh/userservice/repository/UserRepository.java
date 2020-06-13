@@ -3,11 +3,11 @@ package com.dnyanesh.userservice.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.dnyanesh.userservice.model.UserDetails;
+import com.dnyanesh.userservice.model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserDetails, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-	UserDetails getUserByUserId(Integer userId);
+	User getUserByUserId(Integer userId);
 
 }

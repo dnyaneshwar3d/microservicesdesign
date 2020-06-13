@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.dnyanesh.userservice.model.UserDetails;
+import com.dnyanesh.userservice.model.User;
 import com.dnyanesh.userservice.repository.UserRepository;
 
 @Service
@@ -21,42 +21,42 @@ public class UserServiceImpl implements UserService {
 	public UserRepository userRepository;
 
 	@Override
-	public UserDetails login() {
+	public User login() {
 		return null;
 	}
 
 	@Override
-	public List<UserDetails> getAllUser() {
+	public List<User> getAllUser() {
 		return userRepository.findAll();
 	}
 
 	@Override
-	public UserDetails getUser(Integer userId) {
+	public User getUser(Integer userId) {
 		return userRepository.findById(userId).get();
 	}
 
 	@Override
-	public UserDetails createUser(UserDetails userDetails) {
+	public User createUser(User userDetails) {
 		userDetails.setCreatedOn(new Date());
 		userDetails.setUpdatedOn(null);
 		return userRepository.save(userDetails);
 	}
 
 	@Override
-	public UserDetails updateUser(UserDetails userDetails) {
+	public User updateUser(User userDetails) {
 		userDetails.setUpdatedOn(new Date());
 		return userRepository.save(userDetails);
 	}
 
 	@Override
 	public String deleteUser(int userId) {
-		Optional<UserDetails> userDetails = userRepository.findById(userId);
+		Optional<User> userDetails = userRepository.findById(userId);
 		userRepository.delete(userDetails.get());
 		return "true";
 	}
 
 	@Override
-	public String forgetPassword(UserDetails userDetails) {
+	public String forgetPassword(User userDetails) {
 		// TODO Auto-generated method stub
 		return "success";
 	}

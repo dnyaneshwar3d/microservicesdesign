@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dnyanesh.userservice.model.UserDetails;
+import com.dnyanesh.userservice.model.User;
 import com.dnyanesh.userservice.service.UserService;
 
 @RestController
@@ -24,22 +24,22 @@ public class UserController {
 	UserService userService;
 
 	@GetMapping("/users")
-	public List<UserDetails> getUsers() {
+	public List<User> getUsers() {
 		return userService.getAllUser();
 	}
 
 	@GetMapping("/user/{userid}")
-	public ResponseEntity<UserDetails> getUser(@PathVariable Integer userid) {
+	public ResponseEntity<User> getUser(@PathVariable Integer userid) {
 		return ResponseEntity.ok().body(userService.getUser(userid));
 	}
 
 	@PostMapping("/user")
-	public UserDetails createUser(@RequestBody UserDetails userDetails) {
+	public User createUser(@RequestBody User userDetails) {
 		return userService.createUser(userDetails);
 	}
 
 	@PutMapping("/user")
-	public UserDetails updateUser(@RequestBody UserDetails userDetails) {
+	public User updateUser(@RequestBody User userDetails) {
 		userService.updateUser(userDetails);
 		return userDetails;
 	}

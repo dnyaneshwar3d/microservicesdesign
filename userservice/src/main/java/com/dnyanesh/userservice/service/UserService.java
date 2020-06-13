@@ -2,22 +2,22 @@ package com.dnyanesh.userservice.service;
 
 import java.util.List;
 
-import com.dnyanesh.userservice.model.UserDetails;
+import com.dnyanesh.userservice.model.User;
 
 public interface UserService {
 	
-	UserDetails login();
+	User login();
 	
-	UserDetails getUser(Integer userId);
+	User getUser(Integer userId);
 	
-	List<UserDetails> getAllUser();
+	List<User> getAllUser();
 	
-	UserDetails createUser(UserDetails userDetails);
+	User createUser(User userDetails);
 	
-	UserDetails updateUser(UserDetails userDetails);
+	User updateUser(User userDetails);
 	
 	String deleteUser(int userId);
 	
-	String forgetPassword(UserDetails userDetails);
+	String forgetPassword(User userDetails);
 
 }

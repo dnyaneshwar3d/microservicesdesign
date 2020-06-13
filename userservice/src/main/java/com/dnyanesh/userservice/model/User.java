@@ -15,7 +15,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "user_details", uniqueConstraints = { @UniqueConstraint(columnNames = { "username", "emailid" }) })
-public class UserDetails {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,10 +44,10 @@ public class UserDetails {
 	@JoinColumn(name = "address_id", referencedColumnName = "address_id")
 	private Address address;
 
-	public UserDetails() {
+	public User() {
 	}
 
-	public UserDetails(Integer userId, String userName, String emailId, String mobileNumber, String password,
+	public User(Integer userId, String userName, String emailId, String mobileNumber, String password,
 			Date createdOn, Date updatedOn, String firstName, String lastName, Date birthDate) {
 		this.userId = userId;
 		this.userName = userName;
@@ -172,7 +172,7 @@ public class UserDetails {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserDetails other = (UserDetails) obj;
+		User other = (User) obj;
 		if (userId == null) {
 			if (other.userId != null)
 				return false;

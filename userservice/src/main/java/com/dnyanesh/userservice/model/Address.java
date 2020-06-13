@@ -31,7 +31,7 @@ public class Address {
 	private String mobileNumber;
 
 	@OneToOne(mappedBy = "address")
-	private UserDetails userDetails;
+	private User userDetails;
 
 	public Address() {
 	}
@@ -113,11 +113,11 @@ public class Address {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public UserDetails getUserDetails() {
+	public User getUserDetails() {
 		return userDetails;
 	}
 
-	public void setUserDetails(UserDetails userDetails) {
+	public void setUserDetails(User userDetails) {
 		this.userDetails = userDetails;
 	}
 
