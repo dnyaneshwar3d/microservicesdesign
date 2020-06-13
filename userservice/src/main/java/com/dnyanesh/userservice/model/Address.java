@@ -1,10 +1,12 @@
 package com.dnyanesh.userservice.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,7 +25,7 @@ import lombok.ToString;
 @Table(name = "address")
 public class Address {
 	@Id
-	@Column(name = "address_id", columnDefinition = "serial")
+	@Column(name = "addressid", columnDefinition = "serial")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@Column(name = "line1")
@@ -41,7 +43,9 @@ public class Address {
 	@Column(name = "mobilenumber")
 	private String mobileNumber;
 
-	@OneToOne(mappedBy = "address")
-	private User userDetails;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "userid", referencedColumnName = "userid")
+	private User user;
 
 }
