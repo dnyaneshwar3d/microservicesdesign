@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dnyanesh.userservice.beans.UserDetails;
 import com.dnyanesh.userservice.model.User;
 import com.dnyanesh.userservice.service.UserService;
 
@@ -29,7 +30,7 @@ public class UserController {
 	}
 
 	@GetMapping("/user/{userid}")
-	public ResponseEntity<User> getUser(@PathVariable Integer userid) {
+	public ResponseEntity<UserDetails> getUser(@PathVariable Integer userid) {
 		return ResponseEntity.ok().body(userService.getUser(userid));
 	}
 

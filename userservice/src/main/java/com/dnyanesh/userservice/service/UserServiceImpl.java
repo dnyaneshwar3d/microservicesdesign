@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.dnyanesh.userservice.beans.UserAddress;
+import com.dnyanesh.userservice.beans.UserDetails;
 import com.dnyanesh.userservice.model.User;
 import com.dnyanesh.userservice.repository.UserRepository;
 
@@ -31,8 +33,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUser(Integer userId) {
-		return userRepository.findById(userId).get();
+	public UserDetails getUser(Integer userId) {
+		User user = userRepository.findById(userId).get();
+		UserAddress userAddress = UserAddress.builder()
+				.id(user.getAddress().getId())
+				.line1(user.getAddress().getLine1())
+				.line2(user.getAddress().getLine2())
+				.city(user.getAddress().getCity())
+				.build();
+				
+		UserDetails userDetails = UserDetails.builder()
+				.userId(user.getUserId())
+				.firstName(user.getFirstName())
+				.lastName(user.getLastName())
+				.userName(user.getUserName())
+				.address(userAddress)
+				.build();
+		return userDetails;
 	}
 
 	@Override
