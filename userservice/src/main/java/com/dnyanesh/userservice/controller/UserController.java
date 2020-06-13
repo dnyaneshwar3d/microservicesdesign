@@ -17,8 +17,11 @@ import com.dnyanesh.userservice.beans.UserDetails;
 import com.dnyanesh.userservice.model.User;
 import com.dnyanesh.userservice.service.UserService;
 
+import io.swagger.annotations.Api;
+
 @RestController
 @RequestMapping("/api/v1")
+@Api(value = "UserController", description = "This API is for the user related operations")
 public class UserController {
 
 	@Autowired
