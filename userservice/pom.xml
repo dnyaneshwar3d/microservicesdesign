@@ -9,7 +9,7 @@
 		<version>2.3.1.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.dnyanesh</groupId>
+	<groupId>com.dnyanesh</groupId> 
 	<artifactId>userservice</artifactId>
 	<version>0.0.1</version>
 	<name>userservice</name>
